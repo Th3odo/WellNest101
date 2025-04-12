@@ -2,8 +2,8 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCI8WszgNKfANAliPZHtpMsKi1KxgKPFns",
-  authDomain: "wellnest-d0723.firebaseapp.com",
+  apiKey: "",
+  authDomain: "",
   projectId: "wellnest-d0723",
   storageBucket: "wellnest-d0723.firebasestorage.app",
   messagingSenderId: "977428306043",

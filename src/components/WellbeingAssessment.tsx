@@ -83,6 +83,20 @@ const WellbeingAssessment: React.FC = () => {
     const percentage = Math.round((total / maxScore) * 100);
     const recommendations = generateRecommendations(answers);
 
+    // Save to localStorage (history)
+    React.useEffect(() => {
+      const history = JSON.parse(localStorage.getItem('wellbeingHistory') || '[]');
+      const now = new Date();
+      history.unshift({
+        score: total,
+        maxScore,
+        percentage,
+        date: now.toLocaleDateString(),
+        time: now.toLocaleTimeString(),
+      });
+      localStorage.setItem('wellbeingHistory', JSON.stringify(history.slice(0, 20)));
+    }, []);
+
     // Choose emoji and color based on percentage
     let resultEmoji = "😊";
     let resultColor = "bg-green-100 text-green-800 border-green-300";

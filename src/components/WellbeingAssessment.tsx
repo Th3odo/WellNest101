@@ -77,14 +77,11 @@ const WellbeingAssessment: React.FC = () => {
     setCompleted(false);
   };
 
-  if (completed) {
-    const total = answers.reduce((acc, val) => acc + val, 0);
-    const maxScore = questions.length * 5;
-    const percentage = Math.round((total / maxScore) * 100);
-    const recommendations = generateRecommendations(answers);
-
-    // Save to localStorage (history)
-    React.useEffect(() => {
+  React.useLayoutEffect(() => {
+    if (completed) {
+      const total = answers.reduce((acc, val) => acc + val, 0);
+      const maxScore = questions.length * 5;
+      const percentage = Math.round((total / maxScore) * 100);
       const history = JSON.parse(localStorage.getItem('wellbeingHistory') || '[]');
       const now = new Date();
       history.unshift({
@@ -95,7 +92,16 @@ const WellbeingAssessment: React.FC = () => {
         time: now.toLocaleTimeString(),
       });
       localStorage.setItem('wellbeingHistory', JSON.stringify(history.slice(0, 20)));
-    }, []);
+    }
+    // Only run when completed changes to true
+    // eslint-disable-next-line
+  }, [completed]);
+
+  if (completed) {
+    const total = answers.reduce((acc, val) => acc + val, 0);
+    const maxScore = questions.length * 5;
+    const percentage = Math.round((total / maxScore) * 100);
+    const recommendations = generateRecommendations(answers);
 
     // Choose emoji and color based on percentage
     let resultEmoji = "😊";

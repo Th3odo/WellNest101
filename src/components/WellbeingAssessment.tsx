@@ -83,29 +83,48 @@ const WellbeingAssessment: React.FC = () => {
     const percentage = Math.round((total / maxScore) * 100);
     const recommendations = generateRecommendations(answers);
 
+    // Choose emoji and color based on percentage
+    let resultEmoji = "😊";
+    let resultColor = "bg-green-100 text-green-800 border-green-300";
+    if (percentage < 40) {
+      resultEmoji = "😟";
+      resultColor = "bg-red-100 text-red-800 border-red-300";
+    } else if (percentage < 60) {
+      resultEmoji = "😕";
+      resultColor = "bg-yellow-100 text-yellow-800 border-yellow-300";
+    } else if (percentage < 80) {
+      resultEmoji = "🙂";
+      resultColor = "bg-blue-100 text-blue-800 border-blue-300";
+    }
+
     return (
-      <div className="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md max-w-xl mx-auto">
-        <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-4">
+      <div className="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md max-w-xl mx-auto flex flex-col items-center">
+        <div className={`flex flex-col items-center border-4 ${resultColor} rounded-full w-32 h-32 justify-center mb-4 shadow-lg`}>
+          <span className="text-6xl">{resultEmoji}</span>
+          <span className="text-2xl font-bold mt-2">{percentage}%</span>
+        </div>
+        <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-2">
           Your Wellbeing Score
         </h2>
         <p className="text-center text-lg text-gray-600 dark:text-gray-300 mb-4">
-          Score: {total} / {maxScore} ({percentage}%)
+          You scored <span className="font-semibold">{total} / {maxScore}</span>
         </p>
-        <div className="mb-6">
-          {recommendations.map((rec, index) => (
-            <p key={index} className="text-center text-gray-700 dark:text-gray-200 mb-2">
-              {rec}
-            </p>
-          ))}
+        <div className="mb-6 w-full">
+          <h3 className="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-2 text-center">Personalized Recommendations</h3>
+          <ul className="list-disc list-inside space-y-2">
+            {recommendations.map((rec, index) => (
+              <li key={index} className="text-gray-700 dark:text-gray-200 text-base">
+                {rec}
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="flex justify-center">
-          <button
-            onClick={restart}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            Retake Assessment
-          </button>
-        </div>
+        <button
+          onClick={restart}
+          className="px-6 py-2 bg-gradient-to-r from-blue-500 to-green-400 text-white rounded-full font-semibold shadow-md hover:from-blue-600 hover:to-green-500 transition"
+        >
+          Retake Assessment
+        </button>
       </div>
     );
   }
@@ -146,4 +165,3 @@ const WellbeingAssessment: React.FC = () => {
 };
 
 export default WellbeingAssessment;
-

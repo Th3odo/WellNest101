@@ -10,55 +10,81 @@ const ResourceRecommendations = () => {
     general: true
   });
 
-  // Mock AI recommendations based on preferences
+  // Enhanced recommendations with links and music for meditation/sleep
   const getRecommendations = () => {
     const recs = [];
-    
+
     if (preferences.stress || preferences.general) {
       recs.push({
         title: "Mindfulness Meditation Series",
-        description: "AI-curated meditation sessions based on your stress patterns",
+        description: "AI-curated meditation sessions based on your stress patterns. Includes guided audio and video.",
         icon: <Activity className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
-        category: "Stress Management"
+        category: "Stress Management",
+        link: "https://www.youtube.com/watch?v=inpok4MKVLM",
+        linkLabel: "Start Meditation"
+      });
+      recs.push({
+        title: "Relaxing Meditation Music",
+        description: "Listen to calming music to help you relax and meditate.",
+        icon: <Heart className="h-5 w-5 text-pink-600 dark:text-pink-400" />,
+        category: "Meditation Music",
+        link: "https://www.youtube.com/watch?v=2OEL4P1Rz04",
+        linkLabel: "Play Music"
       });
     }
-    
+
     if (preferences.sleep || preferences.general) {
       recs.push({
         title: "Sleep Hygiene Workshop",
-        description: "Learn techniques to improve sleep quality with AI-personalized tips",
+        description: "Learn techniques to improve sleep quality with AI-personalized tips.",
         icon: <BookOpen className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
-        category: "Sleep Improvement"
+        category: "Sleep Improvement",
+        link: "https://www.sleepfoundation.org/sleep-hygiene",
+        linkLabel: "Learn More"
+      });
+      recs.push({
+        title: "Deep Sleep Music",
+        description: "Soothing music to help you fall asleep faster and sleep deeper.",
+        icon: <Heart className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+        category: "Sleep Music",
+        link: "https://www.youtube.com/watch?v=1ZYbU82GVz4",
+        linkLabel: "Play Sleep Music"
       });
     }
-    
+
     if (preferences.social || preferences.general) {
       recs.push({
         title: "Peer Connection Program",
-        description: "AI-matched peer support based on your interests and needs",
+        description: "AI-matched peer support based on your interests and needs.",
         icon: <Users className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
-        category: "Social Connection"
+        category: "Social Connection",
+        link: "https://www.togetherall.com/en-us/",
+        linkLabel: "Find Peers"
       });
     }
-    
+
     if (preferences.academic || preferences.general) {
       recs.push({
         title: "Smart Study Planner",
-        description: "AI-powered scheduling tool that adapts to your workload and energy levels",
+        description: "AI-powered scheduling tool that adapts to your workload and energy levels.",
         icon: <Brain className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
-        category: "Academic Support"
+        category: "Academic Support",
+        link: "https://www.notion.so/templates/student",
+        linkLabel: "Try Planner"
       });
     }
-    
+
     if (recs.length === 0) {
       recs.push({
         title: "General Wellbeing Resources",
         description: "Explore our full library of wellbeing resources",
         icon: <Heart className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
-        category: "General"
+        category: "General",
+        link: "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/",
+        linkLabel: "Explore Resources"
       });
     }
-    
+
     return recs;
   };
 
@@ -107,20 +133,27 @@ const ResourceRecommendations = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {getRecommendations().map((rec, index) => (
-            <div key={index} className="border border-gray-200 dark:border-gray-700 rounded-lg p-5 hover:shadow-md transition-shadow">
+            <div key={index} className="border border-gray-200 dark:border-gray-700 rounded-lg p-5 hover:shadow-lg transition-shadow bg-gradient-to-br from-white via-primary-50 to-gray-50 dark:from-gray-800 dark:via-primary-900 dark:to-gray-900">
               <div className="flex items-start">
-                <div className="flex-shrink-0 p-2 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400">
+                <div className="flex-shrink-0 p-2 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 shadow">
                   {rec.icon}
                 </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">{rec.title}</h3>
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{rec.description}</p>
-                  <span className="mt-2 inline-block px-2 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                <div className="ml-4 flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">{rec.title}</h3>
+                  <p className="mt-1 text-base text-gray-700 dark:text-gray-200">{rec.description}</p>
+                  <span className="mt-2 inline-block px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                     {rec.category}
                   </span>
-                  <button className="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-primary-600 hover:bg-primary-700">
-                    Explore
-                  </button>
+                  {rec.link && (
+                    <a
+                      href={rec.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 transition"
+                    >
+                      {rec.linkLabel || 'Explore'}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

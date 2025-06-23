@@ -20,16 +20,36 @@ const ResourceRecommendations = () => {
         description: "AI-curated meditation sessions based on your stress patterns. Includes guided audio and video.",
         icon: <Activity className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
         category: "Stress Management",
-        link: "https://www.youtube.com/watch?v=inpok4MKVLM",
-        linkLabel: "Start Meditation"
+        widget: (
+          <iframe
+            title="Deezer Meditation Playlist"
+            src="https://widget.deezer.com/widget/dark/playlist/1313621735"
+            width="100%"
+            height="150"
+            frameBorder="0"
+            allowTransparency={true}
+            allow="encrypted-media; clipboard-write"
+            className="rounded-lg mt-3"
+          ></iframe>
+        )
       });
       recs.push({
         title: "Relaxing Meditation Music",
         description: "Listen to calming music to help you relax and meditate.",
         icon: <Heart className="h-5 w-5 text-pink-600 dark:text-pink-400" />,
         category: "Meditation Music",
-        link: "https://www.youtube.com/watch?v=2OEL4P1Rz04",
-        linkLabel: "Play Music"
+        widget: (
+          <iframe
+            title="Deezer Relaxing Music"
+            src="https://widget.deezer.com/widget/dark/playlist/93489551"
+            width="100%"
+            height="150"
+            frameBorder="0"
+            allowTransparency={true}
+            allow="encrypted-media; clipboard-write"
+            className="rounded-lg mt-3"
+          ></iframe>
+        )
       });
     }
 
@@ -39,16 +59,36 @@ const ResourceRecommendations = () => {
         description: "Learn techniques to improve sleep quality with AI-personalized tips.",
         icon: <BookOpen className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
         category: "Sleep Improvement",
-        link: "https://www.sleepfoundation.org/sleep-hygiene",
-        linkLabel: "Learn More"
+        widget: (
+          <iframe
+            title="Deezer Sleep Playlist"
+            src="https://widget.deezer.com/widget/dark/playlist/908622995"
+            width="100%"
+            height="150"
+            frameBorder="0"
+            allowTransparency={true}
+            allow="encrypted-media; clipboard-write"
+            className="rounded-lg mt-3"
+          ></iframe>
+        )
       });
       recs.push({
         title: "Deep Sleep Music",
         description: "Soothing music to help you fall asleep faster and sleep deeper.",
         icon: <Heart className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
         category: "Sleep Music",
-        link: "https://www.youtube.com/watch?v=1ZYbU82GVz4",
-        linkLabel: "Play Sleep Music"
+        widget: (
+          <iframe
+            title="Deezer Deep Sleep Music"
+            src="https://widget.deezer.com/widget/dark/playlist/1313621735"
+            width="100%"
+            height="150"
+            frameBorder="0"
+            allowTransparency={true}
+            allow="encrypted-media; clipboard-write"
+            className="rounded-lg mt-3"
+          ></iframe>
+        )
       });
     }
 
@@ -144,6 +184,9 @@ const ResourceRecommendations = () => {
                   <span className="mt-2 inline-block px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                     {rec.category}
                   </span>
+                  {rec.widget && (
+                    <div className="w-full">{rec.widget}</div>
+                  )}
                   {rec.link && (
                     <a
                       href={rec.link}

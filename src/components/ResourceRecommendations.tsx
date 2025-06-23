@@ -17,15 +17,15 @@ const ResourceRecommendations = () => {
     if (preferences.stress || preferences.general) {
       recs.push({
         title: "Mindfulness Meditation Series",
-        description: "AI-curated meditation sessions based on your stress patterns. Includes guided audio and video.",
+        description: "Guided meditation and mindfulness music to help you de-stress and refocus.",
         icon: <Activity className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
         category: "Stress Management",
         widget: (
           <iframe
-            title="Deezer Meditation Playlist"
+            title="Deezer Mindfulness Meditation"
             src="https://widget.deezer.com/widget/dark/playlist/1313621735"
             width="100%"
-            height="150"
+            height="180"
             frameBorder="0"
             allowTransparency={true}
             allow="encrypted-media; clipboard-write"
@@ -34,16 +34,16 @@ const ResourceRecommendations = () => {
         )
       });
       recs.push({
-        title: "Relaxing Meditation Music",
-        description: "Listen to calming music to help you relax and meditate.",
+        title: "Calm & Focus Music",
+        description: "Instrumental and ambient tracks for relaxation and focus.",
         icon: <Heart className="h-5 w-5 text-pink-600 dark:text-pink-400" />,
-        category: "Meditation Music",
+        category: "Calm & Focus",
         widget: (
           <iframe
-            title="Deezer Relaxing Music"
+            title="Deezer Calm & Focus"
             src="https://widget.deezer.com/widget/dark/playlist/93489551"
             width="100%"
-            height="150"
+            height="180"
             frameBorder="0"
             allowTransparency={true}
             allow="encrypted-media; clipboard-write"
@@ -55,16 +55,16 @@ const ResourceRecommendations = () => {
 
     if (preferences.sleep || preferences.general) {
       recs.push({
-        title: "Sleep Hygiene Workshop",
-        description: "Learn techniques to improve sleep quality with AI-personalized tips.",
+        title: "Sleep Sounds & Music",
+        description: "Soothing playlists to help you fall asleep and improve sleep quality.",
         icon: <BookOpen className="h-5 w-5 text-primary-600 dark:text-primary-400" />,
         category: "Sleep Improvement",
         widget: (
           <iframe
-            title="Deezer Sleep Playlist"
+            title="Deezer Sleep Sounds"
             src="https://widget.deezer.com/widget/dark/playlist/908622995"
             width="100%"
-            height="150"
+            height="180"
             frameBorder="0"
             allowTransparency={true}
             allow="encrypted-media; clipboard-write"
@@ -73,16 +73,16 @@ const ResourceRecommendations = () => {
         )
       });
       recs.push({
-        title: "Deep Sleep Music",
-        description: "Soothing music to help you fall asleep faster and sleep deeper.",
+        title: "Deep Sleep & Relaxation",
+        description: "Music designed for deep sleep and relaxation.",
         icon: <Heart className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
-        category: "Sleep Music",
+        category: "Deep Sleep",
         widget: (
           <iframe
-            title="Deezer Deep Sleep Music"
+            title="Deezer Deep Sleep & Relaxation"
             src="https://widget.deezer.com/widget/dark/playlist/1313621735"
             width="100%"
-            height="150"
+            height="180"
             frameBorder="0"
             allowTransparency={true}
             allow="encrypted-media; clipboard-write"
